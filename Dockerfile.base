@@ -1,4 +1,7 @@
-FROM            python:3.7.0-slim
+FROM            python:3.6.5-slim
 MAINTAINER      pchpch0070@gmail.com
 
 RUN             apt -y update && apt -y dist-upgrade
+
+COPY            ./requirements.txt      /srv/
+RUN             pip install -r /srv/requirements.txt
