@@ -5,9 +5,11 @@ name = "pypi"
 
 [packages]
 django = "*"
+uwsgi = "*"
+pillow = "*"
 
 [dev-packages]
 awsebcli = "*"
 
 [requires]
-python_version = "3.6.5"
+python_version = "3.6"
