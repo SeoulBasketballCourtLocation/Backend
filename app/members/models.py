@@ -1,6 +1,8 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+
+
 class User(AbstractUser):
     CHOICE_GENDER = (
         ('m', '남성'),

@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for court in courts %}
+        {{ court.name }}
+    {% endfor %}
+
+{% endblock %}

@@ -20,6 +20,10 @@ secrets = json.load(open(os.path.join(SECRETS_DIR, 'base.json')))
 
 SECRET_KEY = secrets['SECRET_KEY']
 
+# AUTH
+
+AUTH_USER_MODEL = 'members.User'
+
 # Static
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(ROOT_DIR, '.static')
@@ -30,14 +34,11 @@ STATICFILES_DIRS = [
     STATIC_DIR,
 ]
 
-# AWS
-AWS_ACCESS_KEY_ID = secrets['AWS_ACCESS_KEY_ID']
-AWS_SECRET_ACCESS_KEY = secrets['AWS_SECRET_ACCESS_KEY']
-AWS_DEFAULT_ACL = secrets['AWS_DEFAULT_ACL']
-AWS_S3_REGION_NAME = secrets['AWS_S3_REGION_NAME']
-AWS_S3_SIGNATURE_VERSION = secrets['AWS_S3_SIGNATURE_VERSION']
-
 INSTALLED_APPS = [
+    'courts.apps.CourtsConfig',
+    'members.apps.MembersConfig',
+    'region.apps.RegionConfig',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
