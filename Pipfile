@@ -11,6 +11,7 @@ pillow = "*"
 "boto3" = "*"
 django-extensions = "*"
 ipython = "*"
+djangorestframework = "*"
 
 [dev-packages]
 awsebcli = "*"
