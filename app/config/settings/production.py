@@ -51,6 +51,9 @@ if not RUNSERVER:
 
 WSGI_APPLICATION = 'config.wsgi.production.application'
 
+# DB
+DATABASES = secrets['DATABASES']
+
 
 LOG_DIR = '/var/log/django'
 if not os.path.exists(LOG_DIR):

@@ -7,6 +7,10 @@ name = "pypi"
 django = "*"
 uwsgi = "*"
 pillow = "*"
+"psycopg2-binary" = "*"
+"boto3" = "*"
+django-extensions = "*"
+ipython = "*"
 
 [dev-packages]
 awsebcli = "*"
