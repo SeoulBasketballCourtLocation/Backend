@@ -1,4 +1,4 @@
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
 
 from members.forms import SignupForm
@@ -34,3 +34,8 @@ def login_view(request):
 
     else:
         return render(request, 'members/login.html')
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('index')
