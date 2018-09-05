@@ -18,11 +18,11 @@ class User(AbstractUser):
     )
     img_profile = models.ImageField(upload_to='user', blank=True)
     introduce = models.TextField(blank=True)
-    gender = models.CharField(max_length=1, choices=CHOICE_GENDER)
-    phone_number = models.CharField(max_length=100)
-    email = models.CharField(max_length=100)
-    main_position = models.CharField(max_length=25, choices=CHOICE_POSITION)
-    second_position = models.CharField(max_length=25, choices=CHOICE_POSITION)
+    gender = models.CharField(max_length=1, choices=CHOICE_GENDER, default='x')
+    phone_number = models.CharField(max_length=100, blank=True)
+    email = models.CharField(max_length=100, blank=True)
+    main_position = models.CharField(max_length=25, choices=CHOICE_POSITION, blank=True)
+    second_position = models.CharField(max_length=25, choices=CHOICE_POSITION, blank=True)
 
     def __str__(self):
         return self.username
