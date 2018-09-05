@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container mt-5"><p>{{ user.img_profile }}</p>
+        <p>아이디 : {{ user.username }}</p>
+        <p>전화번호 : {{ user.phone_number }}</p>
+        <p>이메일 : {{ user.email }}</p>
+        <p>성별 : {{ user.get_gender_display }}</p>
+        <p>주 포지션 : {{ user.get_main_position_display }}</p>
+        <p>세컨드 포지션 : {{ user.get_second_position_display }}</p>
+        <p>자기소개 : {{ user.introduce }}</p>
+        <button class="btn btn-primary">정보 수정</button>
+    </div>
+
+{% endblock %}

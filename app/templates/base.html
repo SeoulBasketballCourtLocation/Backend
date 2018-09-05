@@ -12,7 +12,7 @@
 <body>
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">서울시 농구코트 정보</a>
+        <a class="navbar-brand" href="{% url 'index' %}">서울시 농구코트 정보</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -26,11 +26,11 @@
                     <a class="nav-link" href="#">지도</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">프로필</a>
+                    <a class="nav-link" href="{% url 'profile' %}">프로필</a>
                 </li>
                 {% if user.is_authenticated %}
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">로그아웃</a>
+                        <a class="nav-link" href="{% url 'logout' %}">로그아웃</a>
                     </li>
                 {% else %}
                     <li class="nav-item active">

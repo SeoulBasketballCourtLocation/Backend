@@ -1,4 +1,5 @@
 from django.contrib.auth import login, authenticate, logout
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 from members.forms import SignupForm
@@ -39,3 +40,7 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('index')
+
+
+def profile(request):
+    return render(request, 'members/profile.html')
