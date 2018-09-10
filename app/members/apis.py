@@ -5,7 +5,7 @@ from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from members.serializers import UserSerializer
+from members.serializers import UserSerializer, AuthTokenSerializer
 
 User = get_user_model()
 
@@ -36,7 +36,7 @@ class AuthToken(APIView):
 
         # authenticate가 성공한 경우
         user = authenticate(username=username, password=password)
-        serializer = UserSerializer(data=request.data)
+        serializer = AuthTokenSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
         if user:
@@ -46,9 +46,8 @@ class AuthToken(APIView):
             user_info = serializer.validated_data['user']
             data = {
                 'token':token.key,
-                # 'user':UserSerializer(user_info).data
+                'user':UserSerializer(user_info).data
             }
-            print(data)
             return Response(data)
         # authenticate에 실패한 경우
         raise AuthenticationFailed('인증정보가 올바르지 않습니다')
