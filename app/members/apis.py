@@ -30,7 +30,7 @@ class AuthToken(APIView):
     def post(self, request):
         # 전달받은 데이터에서 username, password추출
 
-        # email = request.data.get('email')
+
         username = request.data.get('username')
         password = request.data.get('password')
 
@@ -46,8 +46,9 @@ class AuthToken(APIView):
             user_info = serializer.validated_data['user']
             data = {
                 'token':token.key,
-                'user':UserSerializer(user_info).data
+                # 'user':UserSerializer(user_info).data
             }
+            print(data)
             return Response(data)
         # authenticate에 실패한 경우
         raise AuthenticationFailed('인증정보가 올바르지 않습니다')

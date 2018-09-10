@@ -38,6 +38,14 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDAI_URL = '/media/'
 
+# REST_FRAMEWORK
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
+
 INSTALLED_APPS = [
     'courts.apps.CourtsConfig',
     'members.apps.MembersConfig',
@@ -52,6 +60,7 @@ INSTALLED_APPS = [
     
     'django_extensions',
     'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 
