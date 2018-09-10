@@ -1,5 +1,5 @@
 from django.contrib.auth import get_user_model, authenticate
-from rest_framework import status
+from rest_framework import status, permissions
 from rest_framework.authtoken.models import Token
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.response import Response
@@ -51,3 +51,11 @@ class AuthToken(APIView):
             return Response(data)
         # authenticate에 실패한 경우
         raise AuthenticationFailed('인증정보가 올바르지 않습니다')
+
+class ProfileView(APIView):
+    permission_classes = (
+        permissions.IsAuthenticated,
+    )
+
+    def get(self, request):
+        return Response(UserSerializer(request.user).data)
