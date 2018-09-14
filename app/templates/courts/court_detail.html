@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="map" style="width:500px;height:400px;"></div>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49aa2c9e2a5b9e746b756e4b91f79547"></script>
+    <script>
+        var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+            mapOption = {
+                center: new daum.maps.LatLng({{ court.lat }}, {{ court.lng }}), // 지도의 중심좌표
+                level: 3 // 지도의 확대 레벨
+            };
+
+        // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+        var map = new daum.maps.Map(mapContainer, mapOption);
+
+    </script>
+{% endblock %}

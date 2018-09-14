@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
     {% for court in courts %}
-        {{ court.name }}
+        <a href="{% url 'court-detail' court.id %}"><p>{{ court.name }}</p></a>
     {% endfor %}
-
 {% endblock %}
