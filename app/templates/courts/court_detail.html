@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-<div id="map" style="width:500px;height:400px;"></div>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49aa2c9e2a5b9e746b756e4b91f79547"></script>
+    <div id="map" style="width:500px;height:400px;"></div>
+    <script type="text/javascript"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49aa2c9e2a5b9e746b756e4b91f79547"></script>
     <script>
         var mapContainer = document.getElementById('map'), // 지도를 표시할 div
             mapOption = {
@@ -11,6 +12,14 @@
 
         // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
         var map = new daum.maps.Map(mapContainer, mapOption);
+        var markerPosition = new daum.maps.LatLng({{ court.lat }}, {{ court.lng }});
 
+        // 마커를 생성합니다
+        var marker = new daum.maps.Marker({
+            position: markerPosition
+        });
+
+        // 마커가 지도 위에 표시되도록 설정합니다
+        marker.setMap(map);
     </script>
 {% endblock %}
