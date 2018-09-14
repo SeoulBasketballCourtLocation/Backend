@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container mt-5">
+        <form action="" method="POST">
+            {{ form.non_field_errors }}
+            {% csrf_token %}
+            {% for field in form %}
+                    <div class="form-group">
+                        <p class="form-control-sm">{{ field.label_tag }} {{ field }}</p>
+                        {{ field.errors }}
+                    </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary btn-block">회원정보 수정</button>
+        </form>
+    </div>
+{% endblock %}
