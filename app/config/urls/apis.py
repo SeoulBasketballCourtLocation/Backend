@@ -1,10 +1,12 @@
 from django.urls import path
 
-from members import apis
+from courts.apis import CourtList
+from members.apis import UserList, SignUp, AuthToken, ProfileView
 
 urlpatterns = [
-    path('members/', apis.UserList.as_view()),
-    path('signup/', apis.SignUp.as_view()),
-    path('authtoken/', apis.AuthToken.as_view()),
-    path('profile/', apis.ProfileView.as_view()),
+    path('members/', UserList.as_view()),
+    path('signup/', SignUp.as_view()),
+    path('authtoken/', AuthToken.as_view()),
+    path('profile/', ProfileView.as_view()),
+    path('courts/', CourtList.as_view()),
 ]

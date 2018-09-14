@@ -1,7 +1,9 @@
 from django.contrib.auth import get_user_model, authenticate
 from rest_framework import status, permissions
+from rest_framework.authentication import TokenAuthentication
 from rest_framework.authtoken.models import Token
 from rest_framework.exceptions import AuthenticationFailed
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -30,7 +32,6 @@ class AuthToken(APIView):
     def post(self, request):
         # 전달받은 데이터에서 username, password추출
 
-
         username = request.data.get('username')
         password = request.data.get('password')
 
@@ -56,6 +57,8 @@ class ProfileView(APIView):
     permission_classes = (
         permissions.IsAuthenticated,
     )
+    # permission_classes = (IsAuthenticated,)
+    # authentication_classes = (TokenAuthentication,)
 
     def get(self, request):
         return Response(UserSerializer(request.user).data)
