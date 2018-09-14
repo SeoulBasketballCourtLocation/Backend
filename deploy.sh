@@ -5,7 +5,7 @@ pipenv lock --requirements > requirements.txt
 git add -A
 
 # .secrets를 staging area에 추가
-git add -f .secrets/
+git add -f .secrets/ .data/
 
 # eb deploy실행
 eb deploy --profile basketball-eb --staged
