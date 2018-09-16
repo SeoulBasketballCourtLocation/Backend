@@ -8,6 +8,21 @@ RUNSERVER = 'runserver' in sys.argv
 DEBUG = False
 ALLOWED_HOSTS = secrets['ALLOWED_HOSTS']
 
+WSGI_APPLICATION = 'config.wsgi.production'
+INSTALLED_APPS += [
+    'storages',
+]
+
+# Media
+AWS_ACCESS_KEY_ID = secrets['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = secrets['AWS_SECRET_ACCESS_KEY']
+AWS_DEFAULT_ACL = secrets['AWS_DEFAULT_ACL']
+AWS_S3_REGION_NAME = secrets['AWS_S3_REGION_NAME']
+AWS_S3_SIGNATURE_VERSION = secrets['AWS_S3_SIGNATURE_VERSION']
+AWS_STORAGE_BUCKET_NAME = secrets['AWS_STORAGE_BUCKET_NAME']
+DEFAULT_FILE_STORAGE = 'config.storage.S3DefaultStorage'
+
+
 def is_ec2_linux():
     """Detect if we are running on an EC2 Linux Instance
        See http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/identify_ec2_instances.html

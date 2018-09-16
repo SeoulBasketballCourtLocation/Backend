@@ -1,25 +1,36 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="container" style="margin-top: 30px;">
-        <form action="" method="POST">
-            {% csrf_token %}
-            <div class="login-window">
+        <div class="login-window">
+            <form action="" method="POST" class="">
+                {% csrf_token %}
                 <div class="input-group mb-3" style="width: 400px;">
                     <div class="input-group-prepend" style="width: 120px;">
-                        <span class="input-group-text" id="inputGroup-sizing-default" style="width: 120px;">아이디</span>
+                            <span class="input-group-text" id="inputGroup-sizing-default"
+                                  style="width: 120px;">아이디</span>
                     </div>
                     <input type="text" class="form-control" aria-label="Default"
                            aria-describedby="inputGroup-sizing-default" name="username">
                 </div>
                 <div class="input-group mb-3" style="width: 400px;">
                     <div class="input-group-prepend" style="width: 120px;">
-                        <span class="input-group-text" id="inputGroup-sizing-default" style="width: 120px;">패스워드</span>
+                            <span class="input-group-text" id="inputGroup-sizing-default"
+                                  style="width: 120px;">패스워드</span>
                     </div>
                     <input type="password" class="form-control" aria-label="Default"
                            aria-describedby="inputGroup-sizing-default" name="password">
                 </div>
-                <button type="submit" class="btn btn-light">로그인하기</button>
-            </div>
-        </form>
+                <button type="submit" class="btn btn-light float-left mr-2">로그인하기</button>
+            </form>
+            <a href="{% url 'signup' %}" class="float-left">
+                <button class="btn btn-light">회원가입</button>
+            </a>
+        </div>
+        <br>
+        <br>
+
+        <div class="">
+            <a href="https://kauth.kakao.com/oauth/authorize?client_id=30d64efa41680027cf6125b41c96a1d6&redirect_uri=http://localhost:8000/members/kakao_oauth/&response_type=code"><img
+                    src="/static/images/kakao_account_login_btn_medium_narrow.png" alt=""></a></div>
     </div>
 {% endblock %}

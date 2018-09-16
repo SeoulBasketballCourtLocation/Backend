@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from config import views
+from members.views import kakao_oauth
 
 urlpatterns = [
     path('admin/', admin.site.urls),

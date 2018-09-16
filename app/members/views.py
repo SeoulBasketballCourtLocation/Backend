@@ -2,6 +2,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
+from members import backends
 from members.forms import SignupForm
 
 
@@ -44,3 +45,10 @@ def logout_view(request):
 
 def profile(request):
     return render(request, 'members/profile.html')
+
+def kakao_oauth(request):
+    code = request.GET.get('code')
+    authenticate
+
+
+
