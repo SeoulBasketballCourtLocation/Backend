@@ -13,6 +13,7 @@ django-extensions = "*"
 ipython = "*"
 djangorestframework = "*"
 django-storages = "*"
+requests = "*"
 
 [dev-packages]
 awsebcli = "*"

@@ -14,7 +14,7 @@ class KakaoBackend:
             params = {
                 'grant_type': 'authorization_code',
                 'client_id': secrets["KAKAO_REST_API_KEY"],
-                'redirect_uri': 'http://localhost:8000/members/kakao_oauth/',
+                'redirect_uri': 'http://basketball-dev.ap-northeast-2.elasticbeanstalk.com/members/kakao_oauth/',
                 'code': code,
             }
             response = requests.get(url, params)

@@ -1,7 +1,9 @@
 import json
 
 import requests
+from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
@@ -47,7 +49,7 @@ def logout_view(request):
     logout(request)
     return redirect('index')
 
-
+@login_required(login_url='/members/login/')
 def profile(request):
     return render(request, 'members/profile.html')
 
