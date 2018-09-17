@@ -1,8 +1,13 @@
+import json
+
+import requests
 from django.contrib.auth import login, authenticate, logout
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
+from config.settings.production import secrets
 from members import backends
+from members.backends import KakaoBackend
 from members.forms import SignupForm
 
 
@@ -48,7 +53,10 @@ def profile(request):
 
 def kakao_oauth(request):
     code = request.GET.get('code')
-    authenticate
-
+    user = authenticate(request, code=code)
+    if user is not None:
+        login(request, user)
+        return redirect('index')
+    return redirect('login')
 
 

@@ -21,7 +21,10 @@ secrets = json.load(open(os.path.join(SECRETS_DIR, 'base.json')))
 SECRET_KEY = secrets['SECRET_KEY']
 
 # AUTH
-
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'members.backends.KakaoBackend',
+]
 AUTH_USER_MODEL = 'members.User'
 
 # Static
