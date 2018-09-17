@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="container mt-5"><p>{{ user.img_profile }}</p>
+    <div class="container mt-5">
+        <img class="rounded-circle" src="{{ user.img_profile }}" alt="" width="100px" height="100px">
         <p>아이디 : {{ user.username }}</p>
         <p>전화번호 : {{ user.phone_number }}</p>
         <p>이메일 : {{ user.email }}</p>
