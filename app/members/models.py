@@ -23,6 +23,10 @@ class User(AbstractUser):
     email = models.CharField(max_length=100, blank=True)
     main_position = models.CharField(max_length=25, choices=CHOICE_POSITION, blank=True)
     second_position = models.CharField(max_length=25, choices=CHOICE_POSITION, blank=True)
+    height = models.FloatField(blank=True, null=True)
+    weight = models.FloatField(blank=True, null=True)
+
+
 
     def __str__(self):
         return self.username
