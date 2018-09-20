@@ -53,6 +53,25 @@ def logout_view(request):
 def profile(request):
     return render(request, 'members/profile.html')
 
+def change_profile(request):
+    if request.method == 'POST':
+        print(request.POST)
+        phone_number = request.POST['phone_number']
+        email = request.POST['email']
+        gender = request.POST['gender']
+        main_position = request.POST['main_position']
+        introduce = request.POST['introduce']
+        user = request.user
+        user.phone_number = phone_number
+        user.email = email
+        user.gender = gender
+        user.main_position = main_position
+        user.introduce = introduce
+        user.save()
+        messages.success(request, '개인정보가 수정되었습니다.')
+        return redirect('profile')
+    return render(request, 'members/change_profile.html')
+
 def kakao_oauth(request):
     code = request.GET.get('code')
     user = authenticate(request, code=code)
