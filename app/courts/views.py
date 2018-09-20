@@ -17,6 +17,15 @@ def courts_list(request):
         if Court.objects.filter(name__contains=name):
             break
         Court.objects.create(name=name, lat=lat, lng=lng, no_basket=0)
+
+    navermap_courts = json.load(open(os.path.join(DATA_DIR, 'navermap.json')))
+    for court in navermap_courts['DATA']:
+        name = court['name']
+        lat = court['lat']
+        lng = court['lng']
+        if Court.objects.filter(name__contains=name):
+            break
+        Court.objects.create(name=name, lat=lat, lng=lng, no_basket=0)
     courts = Court.objects.all()
     context = {
         'courts':courts,
