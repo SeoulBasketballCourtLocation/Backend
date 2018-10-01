@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
-    {% for court in courts %}
-        <a href="{% url 'court-detail' court.id %}"><p>{{ court.name }}</p></a>
+    <div class="container">
+        {% for court in courts %}
+            <div class="float-left btn-sm btn-outline m-2">
+                <a href="{% url 'court-detail' court.id %}"><p>{{ court.name }}</p></a>
+            </div>
     {% endfor %}
+    </div>
 {% endblock %}

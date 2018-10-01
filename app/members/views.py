@@ -1,16 +1,9 @@
-import json
-
-import requests
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
-from config.settings.production import secrets
-from members import backends
-from members.backends import KakaoBackend
-from members.forms import SignupForm
+from members.forms import SignupForm, UpdateProfile
 
 
 def signup(request):
@@ -22,9 +15,10 @@ def signup(request):
     else:
         form = SignupForm()
     context = {
-        'form':form,
+        'form': form,
     }
     return render(request, 'members/signup.html', context)
+
 
 def login_view(request):
     if request.method == 'POST':
@@ -49,28 +43,25 @@ def logout_view(request):
     logout(request)
     return redirect('index')
 
+
 @login_required(login_url='/members/login/')
 def profile(request):
     return render(request, 'members/profile.html')
 
+
 def change_profile(request):
     if request.method == 'POST':
-        print(request.POST)
-        phone_number = request.POST['phone_number']
-        email = request.POST['email']
-        gender = request.POST['gender']
-        main_position = request.POST['main_position']
-        introduce = request.POST['introduce']
-        user = request.user
-        user.phone_number = phone_number
-        user.email = email
-        user.gender = gender
-        user.main_position = main_position
-        user.introduce = introduce
-        user.save()
-        messages.success(request, '개인정보가 수정되었습니다.')
-        return redirect('profile')
-    return render(request, 'members/change_profile.html')
+        form = UpdateProfile(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = UpdateProfile(instance=request.user)
+        context = {
+            'form':form,
+        }
+        return render(request, 'members/change_profile.html', context)
+
 
 def kakao_oauth(request):
     code = request.GET.get('code')
@@ -79,5 +70,3 @@ def kakao_oauth(request):
         login(request, user)
         return redirect('index')
     return redirect('login')
-
-

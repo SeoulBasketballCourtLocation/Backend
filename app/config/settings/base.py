@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'courts.apps.CourtsConfig',
     'members.apps.MembersConfig',
     'region.apps.RegionConfig',
+    'games.apps.GamesConfig',
 
     'django.contrib.admin',
     'django.contrib.auth',

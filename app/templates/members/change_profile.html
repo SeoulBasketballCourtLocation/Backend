@@ -1,65 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="container mt-5">
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <div class="form-group">
-                <label for="img_profile">프로필 사진</label><img class="rounded-circle" src="{{ user.img_profile }}" alt=""
-                                                            width="100px" height="100px">
-                <input type="file" class="form-control-file">
-                <p>아이디 : {{ user.username }}</p>
-                <p><label for="전화번호">전화번호 : <input type="text" value="{{ user.phone_number }}" name="phone_number"></label></p>
-                <p><label for="이메일">이메일 : <input type="text" value="{{ user.email }}" name="email"></label></p>
-                <p><label for="성별">성별 : <select name="" id="">
-                    <option selected="selected">{{ user.get_gender_display }}</option>
-                    {% if user.get_gender_display == '남성' %}
-                        <option value="">여성</option>
-                        <option value="">선택안함</option>
-                    {% else %}
-                        <option value="">남성</option>
-                        <option value="">선택안함</option>
-                    {% endif %}
-                </select></label></p>
-                <p><label for="포지션">포지션 : <select name="" id="" class="form-control">
-                    <option selected="selected">{{ user.get_main_position_display }}</option>
-                    {% if user.get_main_position_display == '포인트 가드' %}
-                        <option value="">슈팅 가드</option>
-                        <option value="">스몰 포워드</option>
-                        <option value="">파워 포워드</option>
-                        <option value="">센터</option>
-                        <option value="">선택 안함</option>
-
-                    {% elif user.get_main_position_display == '슈팅 가드' %}
-                        <option value="">포인트 가드</option>
-                        <option value="">스몰 포워드</option>
-                        <option value="">파워 포워드</option>
-                        <option value="">센터</option>
-                        <option value="">선택 안함</option>
-                    {% elif user.get_main_position_display == '스몰 포워드' %}
-                        <option value="">포인트 가드</option>
-                        <option value="">슈팅 가드</option>
-                        <option value="">파워 포워드</option>
-                        <option value="">센터</option>
-                        <option value="">선택 안함</option>
-                    {% elif user.get_main_position_display == '파워 포워드' %}
-                        <option value="">포인트 가드</option>
-                        <option value="">슈팅 가드</option>
-                        <option value="">스몰 포워드</option>
-                        <option value="">센터</option>
-                        <option value="">선택 안함</option>
-                    {% else %}
-                        <option value="">포인트 가드</option>
-                        <option value="">슈팅 가드</option>
-                        <option value="">스몰 포워드</option>
-                        <option value="">파워 포워드</option>
-                        <option value="">선택 안함</option>
-                    {% endif %}
-
-                </select></label></p>
-                <p><label for="자기소개">자기소개 :<textarea name="" id="" cols="30"
-                                                     rows="10">{{ user.introduce }}</textarea></label></p>
-                <button type="submit" class="btn btn-primary btn-block">변경사항 저장</button>
-            </div>
+            {% for field in form %}
+                    <div class="form-group">
+                        <p class="form-control-sm">{{ field.label_tag }} {{ field }}</p>
+                        {{ field.errors }}
+                    </div>
+            {% endfor %}
+            <button type="submit">수정하기</button>
         </form>
     </div>
+
 {% endblock %}
